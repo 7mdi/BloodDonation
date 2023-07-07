@@ -1,0 +1,128 @@
+<br>
+<div class="container">
+    <h2 class="mb-4">USER INFORMATION</h2>
+    <div class="divider mx-auto my-4"></div>
+    <!-- <p class="mb-4 pr-5 letter-spacing">
+        Some information about the user </p> -->
+
+    <div>
+        <!-- <p class="h2">USER INFORMATION</p> -->
+        <div class="row">
+            <div class="col-lg-7">
+                <p class="h5" ><span class="fw-bold fs-4" translate>Userdataels.Name</span> <span>  {{user.firstName}} </span>{{user.lastName}} </p>
+                <p class="h5" ><span class="fw-bold fs-4" translate>Userdataels.UserName</span>  {{user.userName}} </p>
+                <p class="h5" ><span class="fw-bold fs-4" translate>Userdataels.Email</span>  {{user.email}} </p> <br>
+                <br>
+            </div>
+            <div class="col-lg-5">
+                <div><img src="{{user.photo}}" alt="" style="width:50%; height: 40%;"></div>
+            </div>
+        </div>
+        <button (click)="openModel()" type="button" class="btn" value="Edit Acount">Edit
+            User</button>
+        <br>
+    </div>
+</div>
+
+<br><br><br><br>
+
+<div class="modal fade " data-bs-backdrop="static" id="exampleModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="color: #d90429; font-weight: 700;;" translate>
+                    Userdataels.formtitle</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 form">
+                        <form [formGroup]="editUserForm" (ngSubmit)="editUserInfo()">
+                            <div class="row">
+                                <div>
+                                    <div class="form-group pt-3">
+                                        <div class="input-field"
+                                            [class.error]="editUserForm.controls['firstName'].dirty && editUserForm.hasError('required','firstName')">
+                                            <input formControlName="firstName" type="text" placeholder="first name"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <small
+                                        *ngIf="editUserForm.controls['firstName'].dirty && editUserForm.hasError('required','firstName')"
+                                        class="text-danger">First Name is Required</small>
+                                </div>
+                                <div>
+                                    <div class="form-group pt-3">
+                                        <div class="input-field"
+                                            [class.error]="editUserForm.controls['lastName'].dirty && editUserForm.hasError('required','lastName')">
+                                            <input formControlName="lastName" type="text" placeholder="last name"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <small
+                                        *ngIf="editUserForm.controls['lastName'].dirty && editUserForm.hasError('required','lastName')"
+                                        class="text-danger">lastName is Required</small>
+                                </div>
+                                <div>
+                                    <div class="form-group pt-3">
+                                        <div class="input-field"
+                                            [class.error]="editUserForm.controls['userName'].dirty && editUserForm.hasError('required','userName')">
+                                            <input formControlName="userName" type="text" placeholder="user name"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <small
+                                        *ngIf="editUserForm.controls['userName'].dirty && editUserForm.hasError('required','userName')"
+                                        class="text-danger">userName is Required</small>
+                                        <br>
+                                </div>                              
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" 
+                                    (click)="closeModel()" translate>Userdataels.close</button>
+                                    <button [disabled]="editUserForm.invalid" type="submit"
+                                    (click)="closeModel()" class="btn btn-danger" translate>Userdataels.Update</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- <form [formGroup]="editUserForm" (ngSubmit)="editUserInfo()">
+    <div class="row">
+        <div>
+            <div class="form-group pt-3">
+                <div class="input-field"
+                    [class.error]="editUserForm.controls['firstName'].dirty && editUserForm.hasError('required','firstName')">
+                    <input formControlName="firstName" type="text" placeholder="first name" required> </div>
+            </div>
+            <small *ngIf="editUserForm.controls['firstName'].dirty && editUserForm.hasError('required','firstName')"
+                class="text-danger">First Name is Required</small>
+        </div>
+        <div>
+            <div class="form-group pt-3">
+                <div class="input-field"
+                    [class.error]="editUserForm.controls['lastName'].dirty && editUserForm.hasError('required','lastName')">
+                    <input formControlName="lastName" type="text" placeholder="last name" required> </div>
+            </div>
+            <small *ngIf="editUserForm.controls['lastName'].dirty && editUserForm.hasError('required','lastName')"
+                class="text-danger">lastName is Required</small>
+        </div>
+        <div>
+            <div class="form-group pt-3">
+                <div class="input-field"
+                    [class.error]="editUserForm.controls['userName'].dirty && editUserForm.hasError('required','userName')">
+                    <input formControlName="userName" type="text" placeholder="user name" required> </div>
+            </div>
+            <small *ngIf="editUserForm.controls['userName'].dirty && editUserForm.hasError('required','userName')"
+                class="text-danger">userName is Required</small>
+        </div>
+        <div class="modal-footer">
+            <button [disabled]="editUserForm.invalid" type="submit" class="btn btn-danger">submit</button>
+        </div>
+    </div>
+</form> -->

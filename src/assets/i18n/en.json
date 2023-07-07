@@ -1,0 +1,199 @@
+{
+  "header": {
+    "english": "English",
+    "arabic": "Arabic",
+    "home": "Home",
+    "aboutus": "About Us",
+    "service": "Sections",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "about": {
+    "titel": "Our Mission",
+    "subTitel": "Saving lives in Egypt by making finding donors as easy as searching on Google.",
+    "who":"Who are we",
+    "p1":"An Egyptian young man from Fayoum Governorate seeks to provide something beautiful and simple for his country and its people by helping those in need of blood to find blood donors quickly and easily in their area.?",
+    "motivation":"Motivation",
+    "p2":"How many times has someone called you to tell you that they need you to donate blood? Or how many posts have you come across on Facebook where they ask for blood donors? I am sure that it has happened to you many times, just as it happened to me personally, to the extent that it can be said that finding blood donors has become difficult and a problem for many, and sometimes it can be a problem of life or death, this thing has always pushed me to find a solution to it, so I hope you will This platform is the solution?",
+    "vision":"Our vision",
+    "p3":"Simple, finding blood will not be a problem in Egypt, need blood donors? A quick search on this platform gives you access to thousands of donors near you?",
+    "help":"Help us help those in need of blood",
+    "p4":"The best way to help is of course to register as a blood donor, if you can't do that you can always help by sharing this site on social media.",
+    "share":"Share the site on:",
+    "face":"FACEBOOK",
+    "masse":"MASSENGER",
+    "wats":"WHATSAPP"
+
+  },
+  "banner": {
+    "title": "Your Donation Of Blood May Save Someone's Life!",
+    "paragraph": "Donating Blood Helps Save a Million Lives Every Year, Because This Donation Also Includes Platelets, Plasma, and Even Placental Blood.",
+    "donate": "Donate",
+    "order": "Order"
+  },
+  "servicecard": {
+    "title": "Sections",
+    "blood": "Blood",
+    "plasma": "Plasma",
+    "donors": "Donors",
+    "needers": "Needers"
+  },
+  "donationprocess": {
+    "title": "Donation Process",
+    "paragraph": "The donation process from the time you arrive center until the time you leave",
+    "registration": "REGISTRATION",
+    "p1": "You need to complete a very simple registration form. Which contains all required contact information to enter in the donation process",
+    "screening": "SCREENING",
+    "p2": "A drop of blood from your finger will take for simple test to ensure that your blood iron levels are proper enough for donation process.",
+    "donation": "DONATION",
+    "p3": "After ensuring and passed screening test successfully you will be directed to a donor bed for donation. It will take only 6-10 minutes."
+  },
+  "healthbenefits": {
+    "title": "Health Benefits When Donating Blood",
+    "p1": "Donating blood not only improves the life of the recipient but also helps the donor to stay healthy.",
+    "p2": "Reducing Harmful Iron Stores",
+    "p3": "Reducing The Risk Of Cancer",
+    "p4": "Maintaining Cardiovascular Health",
+    "p5": "Helps The Liver Stay Healthy",
+    "p6": " Reducing The Risk Of Heart Attacks",
+    "p7": "New Blood Cell Growth"
+  },
+  "donorstatistics": {
+    "title": "Donor Statistics"
+  },
+  "footer": {
+    "menu": "MENU",
+    "home": "Home",
+    "aboutus": "About Us",
+    "sections": "Sections",
+    "blog": "Blog",
+    "contact": "Contact",
+    "get": "GET IN TOUCH",
+    "location": "Egypt, Fayoum ",
+    "time": "Business Hours:From 10:00 To 18:00",
+    "support": "SUPPORT",
+    "term": "Terms & Conditions",
+    "privacy": "Privacy Policy",
+    "sup": "Company Support",
+    "que": "FAQuestions",
+    "cont": "Contact"
+  },
+  "donatform":{
+    "titel":"DONATE",
+    "fname":"First Name",
+    "ssn":"SSN",
+    "Btype":"Blood Type",
+    "gender":"Gender",
+    "male":"Male",
+    "female":"Female",
+    "location":"Location",
+    "Sdate":"Start Date",
+    "lname":"Last Name",
+    "age":"Age",
+    "Dtype":"Donation Type",
+    "phone":"Phone",
+    "diseases":"Chronic Diseases",
+    "Edate":"End Date",
+    "close":"Close",
+    "submit":"Submit",
+    "edit":"Update",
+    "editForm":"Donation update"
+  },
+  "needform":{
+    "titel":"ORDER",
+    "fname":"First Name",
+    "ssn":"SSN",
+    "Btype":"Blood Type",
+    "gender":"Gender",
+    "male":"Male",
+    "female":"Female",
+    "location":"Location",
+    "quantity":"Quantity",
+    "lname":"Last Name",
+    "age":"Age",
+    "Dtype":"Donation Type",
+    "phone":"Phone",
+    "Hreport":"Hospital Report",
+    "date":"Date",
+    "close":"Close",
+    "submit":"Submit",
+    "edit":"Update",
+    "editForm":"Order update"
+  },
+  "donatlist":{
+    "title":"Donars",
+    "p":"Number of blood donors and all blood and blasma groups",
+    "types":"All Types",
+    "more":"more",
+    "chat":"chat"
+  },
+  "needlist":{
+    "title":"Needies",
+    "p":"All cases that need red blood cells and blasma groups",
+    "types":"All Types",
+    "more":"more",
+    "chat":"chat"
+  },
+  "blog":{
+    "titel":"Blog Articles",
+    "search":"Search Here",
+    "posts":"Popular Posts",
+    "time":"Time Schedule",
+    "time1":"Monday - Friday",
+    "time2":"Saturday",
+    "time3":"Sunday",
+    "close":"Closed",
+    "help":"Need Urgent Help?"
+  },
+  "contact":{
+    "call":"Call Us",
+    "email":"Email Us",
+    "location":"Location",
+    "egypt":"Egypt Fayoum",
+    "contactus":"Contact us",
+    "p":"This page is to make your communication with us fast in all ways",
+    "succ":"Your message was sent successfully."
+  },
+  "profile":{
+    "profile":"profile",
+    "chat":"Chat",
+    "Drequest":"Donation Request",
+    "Nrequest":"Need Request",
+    "pass":"Change Password"
+  },
+  "Drequest":{
+    "name":"Name",
+    "Btype":"Blood Type",
+    "location":"Location",
+    "date":"Date"
+  },
+  "Nrequest":{
+    "name":"Name",
+    "Btype":"Blood Type",
+    "Quantity":"Quantity",
+    "location":"Location",
+    "date":"Date"
+  },
+  "log":{
+    "logg":"Login",
+    "fpass":"Forgot Password",
+    "login":"Login",
+    "nothave":"Don't have an account?",
+    "sign":" Sign up",
+    "connect":"or connect with"
+  },
+  "Changepass":{
+    "change":"Change Your Password",
+    "close":"Close",
+    "submit":"Submit"
+  },
+  "Userdataels":{
+    "Name":"Name",
+    "UserName":"User Name",
+    "Email":"Email",
+    "formtitle":"Update User Information",
+    "Update":"Update",
+    "close":"Close"
+  }
+
+}

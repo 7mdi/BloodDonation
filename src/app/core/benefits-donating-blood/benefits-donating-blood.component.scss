@@ -1,0 +1,171 @@
+@import '/src/scss/variables';
+
+@import '/src/scss/mixins.scss';
+
+@import '/src/scss/media-query.scss';
+
+@import '/src/scss/typography';
+
+@import '/src/scss/common.scss';
+
+
+.department-service {
+	margin-bottom: 40px;
+
+	li {
+		margin-bottom: 10px;
+
+		mat-icon {
+			// color: $secondary-color;
+			color: rgb(141, 3, 3);
+		}
+	}
+}
+
+.text {
+	font-size: 22px;
+	font-weight: 100px;
+	font-style: inherit;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	// font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.text:hover {
+	font-size: 24px;
+	font-weight: 105px;
+	font-style: unset;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	border: 2px rgba(215, 220, 229, 0.5);
+	color: #e00627;
+
+}
+
+.benefits-img {
+	width: 370px;
+	height: 350px;
+	margin-left: 75px;
+	border-radius: 0.2px;
+	box-shadow: 0px 0px 1px 0px rgba(102, 112, 128, 0.5);
+}
+
+.benefits-img:hover {
+	box-shadow: 0px 0px 20px 0px rgba(153, 165, 185, 0.5);
+}
+
+// .divider {
+// 	width: 250px;
+// 	height: 2px;
+// 	margin-left: 500px;
+// 	background: #e00627;
+//   }
+
+// Transition
+
+h2 {
+	margin: 100px auto;
+	border: 1px solid rgb(139, 7, 7);
+	padding: 10px 20px;
+	font-size: 30px;
+	width: fit-content;
+	position: relative;
+	z-index: 1;
+  font-weight: normal;
+	transition: 0.3s;
+
+
+
+}
+
+h2::before,
+h2::after {
+	content: "";
+	width: 12px;
+	height: 12px;
+	background-color: #d90429;
+	position: absolute;
+	border-radius: 50%;
+	top: 50%;
+	transform: translateY(-50%);
+
+}
+
+h2::before {
+	left: -30px;
+}
+
+h2::after {
+	right: -30px;
+}
+
+h2:hover::before {
+	z-index: -1;
+	animation: left-move 0.5s linear forwards;
+
+}
+
+h2:hover::after {
+	z-index: -1;
+	animation: right-move 0.5s linear forwards;
+
+}
+
+h2:hover {
+	color: #fff;
+	border: 2px solid white;
+
+}
+
+
+@keyframes left-move {
+	50% {
+		left: 0;
+		width: 12px;
+		height: 12px;
+	}
+
+	100% {
+		left: 0;
+		border-radius: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+@keyframes right-move {
+	50% {
+		right: 0;
+		width: 12px;
+		height: 12px;
+	}
+
+	100% {
+		right: 0;
+		border-radius: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+}
+
+p {
+	margin-top: -65px;
+	margin-bottom: 1rem;
+	color: #e00627;
+}
+
+
+
+.spikes {
+  position: relative;
+}
+
+.spikes::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 100%;
+  height: 138px;
+  z-index: 1;
+  background-image: linear-gradient(135deg, white 25%, transparent 25%), linear-gradient(225deg, white 25%, transparent 25%);
+  background-size: 30px 30px;
+}

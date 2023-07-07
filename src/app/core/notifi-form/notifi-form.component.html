@@ -1,0 +1,20 @@
+
+
+
+<div class="over-lay" *ngIf="show" (click)="closeOverLay($event)">
+    <div class="content">
+      <form [formGroup]="formQuantity" (ngSubmit)="submit()">
+        <div>
+          <p>{{receiveId}}</p>
+          <label for="quantity">Quantity:</label>
+          <input type="number" class="form-control" id="quantity" formControlName="quantity"  required pattern="[1-2]{1,1}">
+        </div>
+        <button class="btn btn-primary mt-4" type="submit" >submit</button> 
+        <button class="btn btn-primary mt-4" (click)="test()" >GetValue</button> 
+        <button class="btn btn-primary mt-4" (click)="clocePopup()">Close</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- &nbsp;  &nbsp;  &nbsp;  &nbsp;  -->
+  <!-- [disabled]="!formQuantity.valid" -->

@@ -1,0 +1,67 @@
+<section class="features">
+	<div class="container" id="Sections">
+		<div class="col-lg-12 section-title text-center" >
+			<h2 class="mb-4" style="color:  #080808; transition: 0.3s;" translate>servicecard.title</h2>
+			<div class="divider mx-auto my-4"></div>
+		</div>
+		<div class="row" >
+			<div class="col-lg-1 col-md-1 col-sm-1"></div>
+			<div class="row col-lg-5 col-md-5 col-sm-12">
+				<div class="col-lg-11 col-md-11 col-sm-12  feature-item">
+					<div id="Image1" >
+						<img class="feature-item-img" src="/assets/images/blood.jpg" alt="" >
+					</div>
+					<h4 class="mb-3 mt-3" style="color: #e00627;" translate>servicecard.blood </h4>
+					<div class="row">
+						<div class="row">
+							<div class="col-lg-1 col-md-1 col-sm-1"></div>
+							<div class="col-lg-15 btn-container feature-item-btn">
+								<a routerLink="/donars"
+									class="btn btn-main-2 btn-icon btn-round-full "  translate>servicecard.donors</a>
+							</div>
+							<div  class="col-lg-9 btn-container feature-item-btn">
+								<a [routerLink]="['/needers',sections[0]?.id]"
+									class="btn btn-main-2 btn-icon btn-round-full" translate>servicecard.needers</a>
+							</div>
+							<div class="col-lg-1 col-md-1 col-sm-1"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-1 col-md-1 col-sm-1">
+
+				</div>
+			</div>
+			<div class="row col-lg-5 col-md-5 col-sm-12">
+				<div class="col-lg-11 col-md-11 col-sm-12 feature-item">
+					<div  id="Image2">
+						<img class="feature-item-img" src="/assets/images/blazma.jpg" alt="" >
+					</div>
+					<h4 class="mb-3 mt-3" style="color: #e00627;" translate>servicecard.plasma </h4>
+					<div class="row">
+						<div class="row">
+							<div class="col-lg-15 btn-container feature-item-btn">
+								<a routerLink="/donars"
+									class="btn btn-main-2 btn-icon btn-round-full" translate>servicecard.donors</a>
+							</div>
+							<div class="col-lg-9 btn-container feature-item-btn">
+								<a [routerLink]="['/needers',sections[1]?.id]"
+									class="btn btn-main-2 btn-icon btn-round-full" translate="">servicecard.needers</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-1 col-md-1 col-sm-1">
+				</div>
+			</div>
+			<div class="col-lg-1 col-md-1 col-sm-1"></div>
+
+		</div>
+	</div>
+
+</section>
+<div class="spikes">
+
+  </div>
+
+<br><br><br><br><br>
+

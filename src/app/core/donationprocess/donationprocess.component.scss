@@ -1,0 +1,175 @@
+@import '/src/scss/variables';
+
+@import '/src/scss/mixins.scss';
+
+@import '/src/scss/media-query.scss';
+
+@import '/src/scss/typography';
+
+@import '/src/scss/common.scss';
+
+
+
+.container{
+  margin: 5px auto;
+
+}
+.service {
+	padding-top: 180px;
+
+	.service-item {
+		background: $light;
+		padding: 30px;
+		border-radius: 5px;
+	}
+
+	.icon {
+		float: left;
+		margin-bottom: 10px;
+	}
+
+	mat-icon {
+		color: $secondary-color;
+	}
+
+	h4 {
+		padding-left: 20px;
+	}
+
+	.content {
+		clear: both;
+	}
+}
+
+//  Service-2
+
+
+.service-block {
+	padding: 20px;
+	padding-top: 20%;
+	margin-top: 20px;
+	border: 1px solid rgba(0, 0, 0, 0.03);
+	background-color: #fff;
+	box-shadow: 0 2px 15px rgba(0 0 0 /10%);
+	border-radius: 6px;
+	overflow: hidden;
+	transition: transform 0.3s, block-shadow 0.3s;
+
+	img {
+
+		width: 100%;
+		max-width: 100%;
+		margin-top: -40px;
+		border: 5px solid $light;
+
+	}
+
+}
+
+.service-block:hover {
+	transform: translateY(-20px);
+	box-shadow: 0 2px 15px rgba(0 0 0 /20%);
+}
+
+
+// .divider {
+// 	width: 120px;
+// 	height: 2px;
+// 	margin-left: 500px;
+// 	background: #e00627;
+//   }
+
+p {
+	font-weight: 600;
+}
+
+#pragraph {
+	color: #e00627;
+}
+
+// Transition
+
+h2 {
+	margin: 100px auto;
+	border: 1px solid rgb(139, 7, 7);
+	padding: 10px 20px;
+	font-size: 30px;
+  font-weight: normal;
+	width: fit-content;
+	position: relative;
+	z-index: 1;
+	transition: 0.3s;
+
+
+
+}
+
+h2::before,
+h2::after {
+	content: "";
+	width: 12px;
+	height: 12px;
+	background-color: #d90429;
+	position: absolute;
+	border-radius: 50%;
+	top: 50%;
+	transform: translateY(-50%);
+
+}
+
+h2::before {
+	left: -30px;
+}
+
+h2::after {
+	right: -30px;
+}
+
+h2:hover::before {
+	z-index: -1;
+	animation: left-move 0.5s linear forwards;
+
+}
+
+h2:hover::after {
+	z-index: -1;
+	animation: right-move 0.5s linear forwards;
+
+}
+
+h2:hover {
+	color: #fff;
+	border: 2px solid white;
+
+}
+
+
+@keyframes left-move {
+	50% {
+		left: 0;
+		width: 12px;
+		height: 12px;
+	}
+
+	100% {
+		left: 0;
+		border-radius: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+@keyframes right-move {
+	50% {
+		right: 0;
+		width: 12px;
+		height: 12px;
+	}
+
+	100% {
+		right: 0;
+		border-radius: 0;
+		width: 100%;
+		height: 100%;
+	}
+}

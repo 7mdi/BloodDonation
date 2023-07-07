@@ -1,0 +1,131 @@
+<div class="bady">
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+
+<div class="modal fade" data-bs-backdrop="static"  id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" id="TotalForm">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel" translate>donatform.titel</h5>
+        </div>
+        <div class="modal-body" >
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 form">
+                    <form  #prdForm="ngForm" (ngSubmit)="onSubmit()">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="mb-3">
+                                    <label for="fName" class="form-label" translate>donatform.fname</label>
+                                    <input  #firstNameInp="ngModel" type="text" class="form-control" id="fName" name="fristName" [(ngModel)]="newOrder.firstName" required pattern="[A-Za-z-ا-ي]{3,}">
+                                    <div [hidden]="firstNameInp.valid || firstNameInp.untouched" class="alert alert-warning">
+                                        <small *ngIf="firstNameInp.errors?.['required']">Ssn Is required!</small>
+                                        <small *ngIf="firstNameInp.errors?.['pattern']">First Name Must Be 3 Latters At Least!</small>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="ssn" class="form-label" translate>donatform.ssn</label>
+                                    <input #ssnInp="ngModel" type="text" class="form-control" id="ssn" name="ssnDonar" [(ngModel)]="newOrder.ssn" required pattern="[0-9]{14,14}">
+                                    <div [hidden]="ssnInp.valid || ssnInp.untouched" class="alert alert-warning">
+                                        <small *ngIf="ssnInp.errors?.['required']">Ssn Is required!</small>
+                                        <small *ngIf="ssnInp.errors?.['pattern']">Ssn Must Be 14 Latters!</small>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="bloodType" class="form-label" translate>donatform.Btype</label>
+                                    <select #bloodTypeInp="ngModel" name="bloodTypes" class="form-select" id="bloodType" [(ngModel)]="newOrder.bloodType" required>
+                                        <option *ngFor="let item of bloodTypeList" [value]="item.val">{{item.name}}</option>
+                                    </select>
+                                    <div [hidden]="bloodTypeInp.valid || bloodTypeInp.untouched" class="alert alert-warning">
+                                        <small *ngIf="bloodTypeInp.errors?.['required']">Blood Type Is required!</small>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="bloodType" class="form-label" translate>donatform.gender</label>
+                                    <div style="display: flex; margin-bottom: 30px;">
+                                        <div class="form-check" style="margin-right: 5px;">
+                                            <input class="form-check-input" value="Male" type="radio" name="flexRadioDefault" id="flexRadioDefault1" [(ngModel)]="newOrder.gender" required>
+                                            <label class="form-check-label" for="flexRadioDefault1" translate>
+                                            donatform.male
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" value="Female" type="radio" name="flexRadioDefault" id="flexRadioDefault2" [(ngModel)]="newOrder.gender">
+                                            <label class="form-check-label" for="flexRadioDefault2" translate>
+                                            donatform.female
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="lDonar" class="form-label" translate>donatform.location</label>
+                                    <input #locationInp="ngModel" type="text" class="form-control" id="lDonar" name="locDonar" [(ngModel)]="newOrder.location" required pattern="[A-Za-z-ا-ي]{3,}">
+                                    <div [hidden]="locationInp.valid || locationInp.untouched" class="alert alert-warning">
+                                        <small *ngIf="locationInp.errors?.['required']">Location Is required!</small>
+                                        <small *ngIf="locationInp.errors?.['pattern']">Location Must Be 3 Latters At Least!</small>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="sData" class="form-label" translate>donatform.Sdate</label>
+                                    <input #startDateInp="ngModel" type="date" class="form-control" id="sData" name="startDate" [(ngModel)]="newOrder.startDate" required>
+                                    <div [hidden]="startDateInp.valid || startDateInp.untouched" class="alert alert-warning">
+                                        <small *ngIf="startDateInp.errors?.['required']">Start Date Is required!</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="mb-3">
+                                    <label for="lName" class="form-label" translate>donatform.lname</label>
+                                    <input #lastNameInp="ngModel" type="text" class="form-control" id="lName" name="lastName" [(ngModel)]="newOrder.lastName" required pattern="[A-Za-z-ا-ي]{3,}">
+                                    <div [hidden]="lastNameInp.valid || lastNameInp.untouched" class="alert alert-warning">
+                                        <small *ngIf="lastNameInp.errors?.['required']">Last Name Is required!</small>
+                                        <small *ngIf="lastNameInp.errors?.['pattern']">Last Name Must Be 3 Latters At Least!</small>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="agDonar" class="form-label" translate>donatform.age</label>
+                                    <input #ageInp="ngModel" type="number" class="form-control" id="agDonar" name="ageDonar" [(ngModel)]="newOrder.age" required pattern="[0-9]{2,}">
+                                    <div [hidden]="ageInp.valid || ageInp.untouched" class="alert alert-warning">
+                                        <small *ngIf="ageInp.errors?.['required']">Age Is required!</small>
+                                        <small *ngIf="ageInp.errors?.['pattern']">Age Must Be Over 15 Years At Least!</small>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="DonatiType" class="form-label" translate>donatform.Dtype</label>
+                                    <input type="text" value="Blood" class="form-control" id="DonatiType" name="Donation">                   
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phDonar" class="form-label" translate>donatform.phone</label>
+                                    <input #telInp="ngModel" type="text" class="form-control" id="phDonar" name="PhoneDonar" [(ngModel)]="newOrder.phone" required pattern="[0-9]{11,11}">
+                                    <div [hidden]="telInp.valid || telInp.untouched" class="alert alert-warning">
+                                        <small *ngIf="telInp.errors?.['required']">Phone Is required!</small>
+                                        <small *ngIf="telInp.errors?.['pattern']">Phone Must Be 11 Number!</small>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="chrDonar" class="form-label" translate>donatform.diseases</label>
+                                    <input #chroInp="ngModel" type="text" class="form-control" id="chrDonar" name="chronicDonar" [(ngModel)]="newOrder.chronicDiseases" required pattern="[A-Za-z-ا-ي]{3,}">
+                                    <div [hidden]="chroInp.valid || chroInp.untouched" class="alert alert-warning">
+                                        <small *ngIf="chroInp.errors?.['required']">Chronic Diseases Is required!</small>
+                                        <small *ngIf="chroInp.errors?.['pattern']">chronicDiseases Must Be 3 Latters At Least!</small>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="eDate" class="form-label" translate>donatform.Edate</label>
+                                    <input #endDateInp="ngModel" type="date" class="form-control" id="eDate" name="endDate" [(ngModel)]="newOrder.endDate" required>
+                                    <div [hidden]="endDateInp.valid || endDateInp.untouched" class="alert alert-warning">
+                                        <small *ngIf="endDateInp.errors?.['required']">End Date Is required!</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModel()" translate>donatform.close</button>
+                            <button [disabled]="prdForm.invalid" type="submit" class="btn buto" translate>donatform.submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+ </div>

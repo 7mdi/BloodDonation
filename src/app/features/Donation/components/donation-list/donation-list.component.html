@@ -1,0 +1,130 @@
+<section class="sectiondoctors">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 text-center">
+        <div class="section-title">
+          <h2 class="mb-4" style="color: #d90429;" translate>donatlist.title</h2>
+          <div class="divider mx-auto my-4"></div>
+          <p class=" mb-4 pr-5 letter-spacing" translate>donatlist.p </p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-12 text-center  mb-5">
+      <div class="btn-group btn-group-toggle " data-toggle="buttons">
+        <label class="btn active" translate>
+          <input class="input" type="radio" name="shuffle-filter" value="all" checked="checked"
+            (click)="getDonarsBySection()" />donatlist.types
+        </label>
+        <label class="btn " (change)="getDonarsByBloodType(Af.value)">
+          <input class="input" type="radio" #Af name="shuffle-filter" value="-A" />-A
+        </label>
+        <label class="btn" (change)="getDonarsByBloodType(Al.value)">
+          <input class="input" type="radio" #Al name="shuffle-filter" value="+A" />+A
+        </label>
+        <label class="btn" (change)="getDonarsByBloodType(Bf.value)">
+          <input class="input" type="radio" #Bf name="shuffle-filter" value="-B" />-B
+        </label>
+        <label class="btn" (change)="getDonarsByBloodType(Bl.value)">
+          <input class="input" type="radio" #Bl name="shuffle-filter" value="+B" />+B
+        </label>
+        <label class="btn" (change)="getDonarsByBloodType(ABf.value)">
+          <input class="input" type="radio" #ABf name="shuffle-filter" value="-AB" />-AB
+        </label>
+        <label class="btn" (change)="getDonarsByBloodType(ABl.value)">
+          <input class="input" type="radio" #ABl name="shuffle-filter" value="+AB" />+AB
+        </label>
+        <label class="btn" (change)="getDonarsByBloodType(Of.value)">
+          <input class="input" type="radio" #Of name="shuffle-filter" value="-O" />-O
+        </label>
+        <label class="btn" (change)="getDonarsByBloodType(Ol.value)">
+          <input class="input" type="radio" #Ol name="shuffle-filter" value="+O" />+O
+        </label>
+      </div>
+    </div>
+    
+    <div class="row shuffle-wrapper portfolio-gallery">
+      <!-- <div *ngFor="let item of Needy"> -->
+      <ng-container *ngFor="let item of getPageItems()">
+        <div class="col-lg-4 col-sm-12 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat2&quot;]">
+          <div class="position-relative doctor-inner-box needy-item">
+            <div class="row">
+              <div class="col-lg-8 col-sm-8 col-md-8">
+                <h4>{{item.firstName}} {{item.lastName}}</h4>
+                <!-- <p>{{item.location}}</p> -->
+                <p>Available from {{item.startDate | date :'shortTime' }}</p>
+                <!-- <p>From: {{item.startDate | date :'shortDate' }}</p>
+                <p>To: {{item.endDate | date :'shortDate'}}</p> -->
+                <i class="fa-brands fa-facebook-messenger fa-xl" style="color: #b80000;"
+                  (click)="openChatWindow(item.applicationUserId??'')"></i> <span class="h5" translate>
+                  donatlist.chat</span>
+              </div>
+              <div class="col-lg-4 col-sm-4 col-md-4">
+                <h2 style="color: #970a0a; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
+                  {{item.bloodType}}</h2>
+                <!-- <p>To: {{item.endDate | date :'shortDate'}}</p> -->
+                <!-- <h3>{{item.id}}</h3> -->
+                <!-- <p><i class="fa-regular fa-circle-info fa-xl" style="color: #cc0000;" type="button"(click)="getDonarById(item.id)" (click)="openModel()"></i></p> -->
+                <p class="h6" type="button" (click)="getDonarById(item.id)" (click)="openModel()" translate>
+                  donatlist.more</p>
+                <!-- <i class="fa-brands fa-facebook-messenger" (click)="openChatWindow(item.applicationUserId??'')"></i> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <!-- Pagination buttons -->
+    <div class="pagination-container">
+      <button [disabled]="currentPage === 1" (click)="previousPage()">Previous</button>
+      <button *ngFor="let page of totalPagesArray()" [disabled]="currentPage === page"
+          (click)="goToPage(page)">{{ page }}</button>
+      <button [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
+  </div>
+  </div>
+
+  <div class="modal fade" data-bs-backdrop="static" id="exampleModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{DonarById?.firstName}} {{DonarById?.lastName}}</h5>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <!-- <p><span>Name:</span> </p> -->
+              <p><span><b>Age:</b></span> {{DonarById?.age}}</p>
+              <p><span><b>Blood Type:</b></span> {{DonarById?.bloodType}}</p>
+              <p><span><b>Gender:</b></span> {{DonarById?.gender}}</p>
+              <a href="https://wa.me/{{DonarById?.phone}}">
+                <p><span><b>Tel:</b></span> {{DonarById?.phone}}</p>
+              </a>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <p><span><b>City:</b></span> {{DonarById?.location}}</p>
+              <p><span><b>Diseases:</b></span> {{DonarById?.chronicDiseases}}</p>
+              <p><span><b>S-Date:</b></span> {{ DonarById?.startDate | date :'shortDate'}} {{DonarById?.startDate | date:'shortTime' }}</p>
+              <p><span><b>E-Date:</b></span> {{DonarById?.endDate | date :'shortDate'}} {{DonarById?.endDate | date:'shortTime'}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModel()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div class="chatSection" *ngIf="user && openChat">
+  <button class="btn btn-danger" (click)="hied()">x</button>
+  <app-conversation [user]="user"></app-conversation>
+</div>
+
+<div class="spikes">
+
+</div>
+<br><br><br><br><br>

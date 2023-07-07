@@ -1,0 +1,289 @@
+<br>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <p>
+            <a routerLink="/addDonar" class="btn buto" translate>
+                <i class="fas fa-plus"></i>
+                banner.donate
+            </a>
+        </p>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th translate>
+                            Drequest.name
+                        </th>
+                        <th translate>
+                            Drequest.Btype
+                        </th>
+                        <th translate>
+                            Drequest.location
+                        </th>
+                        <th translate>
+                            Drequest.date
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let item of getPageItems()">
+                        <!-- <ng-container *ngFor="let item of allAllNeedyRequest"> -->
+                        <tr>
+                            <td>
+                                {{item.firstName}} {{item.lastName}}
+                            </td>
+                            <td>
+                                {{item.bloodType}}
+                            </td>
+                            <td>
+                                {{item.location}}
+                            </td>
+                            <td>
+                                {{item.startDate | date :'shortDate'}}
+                            </td>
+                            <td>
+                                <a style="color: rgb(68, 68, 238); margin: 0px 4px;" (click)="openEditModel()"
+                                    (click)="getDonarById(item.id)"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                                <a style="color: rgb(68, 68, 238); margin: 0px 4px;" (click)="openDetailsModel()"
+                                    (click)="getDonarById(item.id)"><i class="fa fa-th-list" aria-hidden="true"></i></a>
+                                <a style="color: rgb(238, 68, 68); margin: 0px 4px;"
+                                    (click)="deleteDonationRequest(item.id)"><i class="fa fa-trash"
+                                        aria-hidden="true"></i></a>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+            <hr />
+            <!-- Pagination buttons -->
+            <div class="pagination-container">
+                <button [disabled]="currentPage === 1" (click)="previousPage()">Previous</button>
+                <button *ngFor="let page of totalPagesArray()" [disabled]="currentPage === page"
+                    (click)="goToPage(page)">{{ page }}</button>
+                <button [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Model Edit -->
+<div class="modal fade badyForm" data-bs-backdrop="static" id="editModel" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="TotalForm">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" translate>donatform.editForm</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 form">
+                        <form #dataForm="ngForm" (ngSubmit)="updateData(dataForm)">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="mb-3">
+                                        <label for="fName" class="form-label" translate>donatform.fname</label>
+                                        <input #firstNameInp="ngModel" value={{DonarById.firstName}} type="text"
+                                            class="form-control inputForm" id="fName" name="fristName"
+                                            [(ngModel)]="editOrder.firstName" required pattern="[A-Za-z-ا-ي]{3,}">
+                                        <div [hidden]="firstNameInp.valid || firstNameInp.untouched"
+                                            class="alert alert-warning">
+                                            <small *ngIf="firstNameInp.errors?.['required']">Ssn Is required!</small>
+                                            <small *ngIf="firstNameInp.errors?.['pattern']">First Name Must Be 3 Latters
+                                                At Least!</small>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="ssn" class="form-label" translate>donatform.ssn</label>
+                                        <input #ssnInp="ngModel" value={{DonarById.ssn}} type="text"
+                                            class="form-control inputForm" id="ssn" name="ssnDonar"
+                                            [(ngModel)]="editOrder.ssn" required pattern="[0-9]{14,14}">
+                                        <div [hidden]="ssnInp.valid || ssnInp.untouched" class="alert alert-warning">
+                                            <small *ngIf="ssnInp.errors?.['required']">Ssn Is required!</small>
+                                            <small *ngIf="ssnInp.errors?.['pattern']">Ssn Must Be 14 Latters!</small>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="bloodType" class="form-label" translate>donatform.Btype</label>
+                                        <select #bloodTypeInp="ngModel" value={{DonarById.bloodType}} name="bloodTypes"
+                                            class="form-select inputForm" id="bloodType"
+                                            [(ngModel)]="editOrder.bloodType" required>
+                                            <option *ngFor="let item of bloodTypeList" [value]="item.val">{{item.name}}
+                                            </option>
+                                        </select>
+                                        <div [hidden]="bloodTypeInp.valid || bloodTypeInp.untouched"
+                                            class="alert alert-warning">
+                                            <small *ngIf="bloodTypeInp.errors?.['required']">Blood Type Is
+                                                required!</small>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="bloodType" class="form-label" translate>donatform.gender</label>
+                                        <div style="display: flex; margin-bottom: 30px;">
+                                            <div class="form-check" style="margin-right: 5px;">
+                                                <input class="form-check-input inputForm" [value]="DonarById.gender"
+                                                    value="Male" type="radio" name="flexRadioDefault"
+                                                    id="flexRadioDefault1" [(ngModel)]="editOrder.gender" required>
+                                                <label class="form-check-label" for="flexRadioDefault1" translate>
+                                                    donatform.male
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input inputForm" value="Female" type="radio"
+                                                    name="flexRadioDefault" id="flexRadioDefault2"
+                                                    [(ngModel)]="editOrder.gender">
+                                                <label class="form-check-label" for="flexRadioDefault2" translate>
+                                                    donatform.female
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="lDonar" class="form-label" translate>donatform.location</label>
+                                        <input #locationInp="ngModel" value={{DonarById.location}} type="text"
+                                            class="form-control inputForm" id="lDonar" name="locDonar"
+                                            [(ngModel)]="editOrder.location" required pattern="[A-Za-z-ا-ي]{3,}">
+                                        <div [hidden]="locationInp.valid || locationInp.untouched"
+                                            class="alert alert-warning">
+                                            <small *ngIf="locationInp.errors?.['required']">Location Is
+                                                required!</small>
+                                            <small *ngIf="locationInp.errors?.['pattern']">Location Must Be 3 Latters At
+                                                Least!</small>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="sData" class="form-label" translate>donatform.Sdate</label>
+                                        <input #startDateInp="ngModel" value={{DonarById.startDate}} type="date"
+                                            class="form-control inputForm" id="sData" name="startDate"
+                                            [(ngModel)]="editOrder.startDate" required>
+                                        <div [hidden]="startDateInp.valid || startDateInp.untouched"
+                                            class="alert alert-warning">
+                                            <small *ngIf="startDateInp.errors?.['required']">Start Date Is
+                                                required!</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="mb-3">
+                                        <label for="lName" class="form-label" translate>donatform.lname</label>
+                                        <input #lastNameInp="ngModel" value={{DonarById.lastName}} type="text"
+                                            class="form-control inputForm" id="lName" name="lastName"
+                                            [(ngModel)]="editOrder.lastName" required pattern="[A-Za-z-ا-ي]{3,}">
+                                        <div [hidden]="lastNameInp.valid || lastNameInp.untouched"
+                                            class="alert alert-warning">
+                                            <small *ngIf="lastNameInp.errors?.['required']">Last Name Is
+                                                required!</small>
+                                            <small *ngIf="lastNameInp.errors?.['pattern']">Last Name Must Be 3 Latters
+                                                At Least!</small>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="agDonar" class="form-label" translate>donatform.age</label>
+                                        <input #ageInp="ngModel" value={{DonarById.age}} type="number"
+                                            class="form-control inputForm" id="agDonar" name="ageDonar"
+                                            [(ngModel)]="editOrder.age" required pattern="[0-9]{2,}">
+                                        <div [hidden]="ageInp.valid || ageInp.untouched" class="alert alert-warning">
+                                            <small *ngIf="ageInp.errors?.['required']">Age Is required!</small>
+                                            <small *ngIf="ageInp.errors?.['pattern']">Age Must Be Over 15 Years At
+                                                Least!</small>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="DonatiType" class="form-label" translate>donatform.Dtype</label>
+                                        <input type="text" value="Blood/دم" class="form-control" id="DonatiType"
+                                            name="Donation">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="phDonar" class="form-label" translate>donatform.phone</label>
+                                        <input #telInp="ngModel" value={{DonarById.phone}} type="text"
+                                            class="form-control inputForm" id="phDonar" name="PhoneDonar"
+                                            [(ngModel)]="editOrder.phone" required pattern="[0-9]{11,11}">
+                                        <div [hidden]="telInp.valid || telInp.untouched" class="alert alert-warning">
+                                            <small *ngIf="telInp.errors?.['required']">Phone Is required!</small>
+                                            <small *ngIf="telInp.errors?.['pattern']">Phone Must Be 11 Number!</small>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="chrDonar" class="form-label" translate>donatform.diseases</label>
+                                        <input #chroInp="ngModel" value={{DonarById.chronicDiseases}} type="text"
+                                            class="form-control inputForm" id="chrDonar" name="chronicDonar"
+                                            [(ngModel)]="editOrder.chronicDiseases" required pattern="[A-Za-z-ا-ي]{3,}">
+                                        <div [hidden]="chroInp.valid || chroInp.untouched" class="alert alert-warning">
+                                            <small *ngIf="chroInp.errors?.['required']">Chronic Diseases Is
+                                                required!</small>
+                                            <small *ngIf="chroInp.errors?.['pattern']">chronicDiseases Must Be 3 Latters
+                                                At Least!</small>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="eDate" class="form-label" translate>donatform.Edate</label>
+                                        <input #endDateInp="ngModel" value={{DonarById.endDate}} type="date"
+                                            class="form-control inputForm" id="eDate" name="endDate"
+                                            [(ngModel)]="editOrder.endDate" required>
+                                        <div [hidden]="endDateInp.valid || endDateInp.untouched"
+                                            class="alert alert-warning">
+                                            <small *ngIf="endDateInp.errors?.['required']">End Date Is required!</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                    (click)="closeEditModel()" translate>donatform.close</button>
+                                <button type="submit" class="btn buto" [disabled]="!dataForm.valid"
+                                    translate>donatform.edit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="spikes">
+
+</div> -->
+
+<br><br><br><br>
+
+
+<!-- Model Details -->
+<div class="modal fade" data-bs-backdrop="static" id="detailsModel" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{DonarById.firstName}} {{DonarById.lastName}}</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <!-- <p><span>Name:</span> </p> -->
+                        <p><span><b>Age:</b></span> {{DonarById.age}}</p>
+                        <p><span><b>Blood Type:</b></span> {{DonarById.bloodType}}</p>
+                        <p><span><b>Gender:</b></span> {{DonarById.gender}}</p>
+                        <a href="https://wa.me/{{DonarById.phone}}">
+                            <p><span><b>Tel:</b></span> {{DonarById.phone}}</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <p><span><b>City:</b></span> {{DonarById.location}}</p>
+                        <p><span><b>Diseases:</b></span> {{DonarById.chronicDiseases}}</p>
+                        <p><span><b>S-Date:</b></span> {{ DonarById.startDate | date :'shortDate'}}
+                            {{DonarById.startDate | date:'shortTime' }}</p>
+                        <p><span><b>E-Date:</b></span> {{DonarById.endDate | date :'shortDate'}} {{DonarById.endDate |
+                            date:'shortTime'}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                    (click)="closeDetailsModel()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

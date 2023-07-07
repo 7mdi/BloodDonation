@@ -1,0 +1,33 @@
+<div class="msg-header">
+  <div class="container1">
+      <img src="\assets\images\team1\1.jpg" class="msgimg">
+      <div class="active ">
+          <h4 class="m-auto" style=" margin-left: 20px;">{{user?.firstName}}</h4>
+      </div>
+  </div>
+</div>
+<!-- ------------------ -->
+    <!-- <h4 class="m-auto" style=" margin-left: 20px;"><img  id="thumbnail"
+      src="\assets\images\team1\1.jpg" >{{user?.firstName}}</h4> -->
+<!-- ------------------ -->
+    <div class="container">
+      <div class="card">
+        <div class="chat-list" #panel>
+          <div *ngFor="let message of con">
+            <div style="word-wrap: break-word;" [ngClass]="message.senderId == user.id?'bg-primary text-white w-50 rounded mt-1 p-1 me-auto':'bg-danger text-white w-50 rounded mt-1 p-1 ms-auto'"> {{message.content}} <span> {{message.createdDate | date:'shortTime'}} </span> <a style="color: rgb(117, 7, 7); margin: 0px 4px;" (click)="Delete(message.id)"><i class="fa fa-trash" aria-hidden="true"></i></a></div>
+          </div>
+        </div>
+        <div class="chat-footer">
+          <form [formGroup]="SendForm" (ngSubmit)="Send(SendForm)">
+            <div class="p-2" style="display: flex; justify-content: space-between;">
+
+                <input formControlName="content" placeholder="Message" type="text" class="form-control px-5 ">
+
+                <button class="btn btn-danger" [disabled]="!SendForm.valid">Send</button>
+
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+

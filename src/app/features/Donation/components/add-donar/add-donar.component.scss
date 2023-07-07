@@ -1,0 +1,124 @@
+.ng-valid:not(form) {
+    border-left: 5px solid #df9292; /* green */
+  }
+
+  .ng-invalid:not(form)  {
+    border-left: 5px solid #9e2727; /* red */
+  }
+
+  .bady{
+    // background-color: #e9080836;
+    background-image: url("/assets/images/form.jpg");
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  // .TotalForm{
+  //   background-color: #cfbdbd00;
+  // }
+
+  #TotalForm{
+    background-color: #ffffff57;
+    border-radius: 20px;
+  }
+
+  label{
+    color: #9e2727;
+    font-weight:500 ;
+    font-size: large;
+  }
+
+  h5{
+    color: #9e1616;
+    font-weight:700 ;
+    font-size:xx-large;
+    padding-left: 175px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+    font-style: italic;
+    // font-style: unset;
+  }
+
+  #fName{
+    background-color: rgba(255, 255, 255, 0.349);
+    // border-color: #b11717af;
+    border-radius: 10px;
+  }
+
+  #ssn{
+    background-color: rgba(255, 255, 255, 0.349);
+    // border-color: #b11717af;
+    border-radius: 10px;
+  }
+
+  #bloodType{
+    background-color: rgba(255, 255, 255, 0.349);
+    // border-color: #b11717af;
+    border-radius: 10px;
+  }
+
+  #flexRadioDefault1{
+    background-color: rgba(255, 255, 255, 0.349);
+    // border-color: #b11717af;
+    border-radius: 10px;
+  }
+
+  #flexRadioDefault2{
+    background-color: rgba(255, 255, 255, 0.349);
+    // border-color: #b11717af;
+    border-radius: 10px;
+  }
+
+  #lDonar{
+    background-color: rgba(255, 255, 255, 0.349);
+    // border-color: #b11717af;
+    border-radius: 10px;
+  }
+
+  #sData{
+    background-color: rgba(255, 255, 255, 0.349);
+    // border-color: #b11717af;
+    border-radius: 10px;
+  }
+
+  #lName{
+    background-color: rgba(255, 255, 255, 0.349);
+    // border-color: #b11717af;
+    border-radius: 10px;
+  }
+
+  #agDonar{
+    background-color: rgba(255, 255, 255, 0.349);
+    // border-color: #b11717af;
+    border-radius: 10px;
+  }
+
+  #DonatiType{
+    background-color: rgba(255, 255, 255, 0.349);
+    // border-color: #b11717af;
+    border-radius: 10px;
+  }
+
+  #phDonar{
+    background-color: rgba(255, 255, 255, 0.349);
+    // border-color: #b11717af;
+    border-radius: 10px;
+  }
+
+  #chrDonar{
+    background-color: rgba(255, 255, 255, 0.349);
+    // border-color: #b11717af;
+    border-radius: 10px;
+  }
+
+  #eDate{
+    background-color: rgba(255, 255, 255, 0.349);
+    // border-color: #b11717af;
+    border-radius: 10px;
+  }
+
+  .buto{
+    color: white;
+    background-color: #c20020;
+}
+

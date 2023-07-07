@@ -1,0 +1,92 @@
+<!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> -->
+<br>
+<div class="container bootstrap">
+    <div class="row">
+      <!-- class="col-lg-3 col-md-3 md-margin-bottom-40  " -->
+        <div >
+            <img routerLink="/userinformation" class="img-responsive profile-img margin-bottom-20 " style="width:60%; height:50%;" src="{{user.photo}}" alt="">
+
+            <ul class="list-group sidebar-nav-v1 margin-bottom-40 " id="sidebar-nav-1">
+                <li class="list-group-item">
+                    <a routerLink="/userinformation" translate><i class="fa fa-user" ></i>  profile.profile</a>
+                </li>
+                <li class="list-group-item">
+                    <a routerLink="/chat" translate><i class="fa-brands fa-facebook-messenger" ></i> profile.chat</a>
+                </li>
+                <li class="list-group-item">
+                    <a routerLink="/userdonationrequest" translate><i class="fa fa-id-card" ></i>profile.Drequest</a>
+                </li>
+                <li class="list-group-item">
+                    <a routerLink="/userneedyrequest" translate><i class="fa fa-id-card" ></i>profile.Nrequest</a>
+                </li>
+                <li class="list-group-item">
+                    <a class="link-dark" (click)="openModel()" id="pass" translate ><i class="fa fa-cog"></i>profile.pass</a>
+                </li>
+            </ul>
+
+        </div>
+        <div class="col-lg-9 col-md-9 text-content">
+            <br>
+            <router-outlet>
+
+            </router-outlet>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- <div class="spikes">
+
+</div>
+
+<br><br><br><br><br> -->
+
+
+
+
+
+
+<div class="modal fade " data-bs-backdrop="static" id="exampleModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="color: #d90429; font-weight: 700;" translate>Changepass.change</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 form">
+                        <form [formGroup]="changePasswordForm" (ngSubmit)="changePasswordFun()">
+                            <div class="row">
+                                <div>
+                                    <div class="form-group pt-3">
+                                        <div class="input-field" [class.error]="changePasswordForm.controls['currentPassword'].dirty && changePasswordForm.hasError('required','currentPassword')"> <span class="fa fa-user p-2" style="color: #d90429;"></span> <input formControlName="currentPassword" [type]="type" placeholder="Current Password" required> <button type="button" (click)="hideShowPass()" class="bg-white text-muted"> <span class="fa {{eyeIcon}}"></span> </button> </div>
+                                    </div>
+                                    <small *ngIf="changePasswordForm.controls['currentPassword'].dirty && changePasswordForm.hasError('required','currentPassword')" class="text-danger">Current Password is Required</small>
+                                </div>
+                                <div>
+                                    <div class="form-group pt-3">
+                                        <div class="input-field" [class.error]="changePasswordForm.controls['newPassword'].dirty && changePasswordForm.hasError('required','newPassword')"> <span class="fa fa-user p-2" style="color: #d90429;"></span> <input formControlName="newPassword" [type]="type" placeholder="New Password" required> <button type="button" (click)="hideShowPass()" class="bg-white text-muted"> <span class="fa {{eyeIcon}}"></span> </button> </div>
+                                    </div>
+                                    <small *ngIf="changePasswordForm.controls['newPassword'].dirty && changePasswordForm.hasError('required','newPassword')" class="text-danger">New Password is Required</small>
+                                </div>
+                                <div>
+                                    <div class="form-group pt-3">
+                                        <div class="input-field" [class.error]="changePasswordForm.controls['confirmPassword'].dirty && changePasswordForm.hasError('required','confirmPassword')"> <span class="fa fa-user p-2" style="color: #d90429;"></span> <input formControlName="confirmPassword" [type]="type" placeholder="Confirm Password" required> <button type="button" (click)="hideShowPass()" class="bg-white text-muted"> <span class="fa {{eyeIcon}}"></span> </button> </div>
+                                    </div>
+                                    <small *ngIf="changePasswordForm.controls['confirmPassword'].dirty && changePasswordForm.hasError('required','confirmPassword')" class="text-danger">Confirm Password is Required</small>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="closeModel()" translate>Changepass.close</button>
+                                    <button type="submit" class="btn btn-danger" translate>Changepass.submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

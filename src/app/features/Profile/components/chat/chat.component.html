@@ -1,0 +1,16 @@
+<!-- <h2 class="text-center">Wellcom {{userName}}</h2> -->
+
+<div class="row" style="background-color: rgba(177, 162, 162, 0.068);">
+<i class="fa-regular fa-bell" id="icon"></i>
+    <div class="col-sm-4">
+      <div *ngFor="let user of users">
+        <div class="px-5 py-2 text-center" style="margin-left: 0%;">
+        <button (click)="Caht(user)" style="width:70% ; height: 15%;  text-align: left; font-size: larger;" class="btn btn-outline-danger"><img src="\assets\images\team1\1.jpg" alt="" style="width: 30%; height:30%;border-radius: 50%; padding-left: 0%;"> {{ user.firstName}} </button>
+        </div>
+        </div>
+    </div>
+
+    <div class="col-sm-8 bg-light py-3">
+      <app-conversation [user]="user"></app-conversation>
+    </div>
+  </div>

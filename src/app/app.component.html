@@ -1,0 +1,11 @@
+<span *ngIf="[currentRoute]!= ['/home']" (click)="goBack()" class="back"><i class="fa-sharp fa-solid fa-circle-chevron-left fa-2xl" style="color: #bf0303;"></i></span>
+<router-outlet>
+
+</router-outlet>
+<lib-ng-toast></lib-ng-toast>
+
+
+
+<!-- <div (click)="sent()">
+    <app-notifi-form [show]="showValue" [receiveId]="receivedValue" [order]="orderId" (newQuantity)="handleValue($event)"></app-notifi-form>
+</div> -->

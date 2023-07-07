@@ -1,0 +1,140 @@
+<section class="sectiondoctors">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 text-center">
+        <div class="section-title">
+          <h2 class="mb-4" style="color:#d90429;" translate>needlist.title</h2>
+          <div class="divider mx-auto my-4"></div>
+          <p class="mb-4 pr-5 letter-spacing" translate>
+            needlist.p </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 text-center  mb-5">
+      <div class="btn-group btn-group-toggle " data-toggle="buttons">
+        <label class="btn active" translate>
+          <input class="input" type="radio" name="shuffle-filter" value="all" checked="checked"
+            (click)="getNeedyBySection()" />needlist.types
+        </label>
+        <label class="btn " (change)="getNeedyByBloodType(A.value)">
+          <input class="input" type="radio" name="shuffle-filter" value="A" />A-
+        </label>
+        <label class="btn" (change)="getNeedyByBloodType(A.value)">
+          <input class="input" type="radio" #A name="shuffle-filter" value="A" />A+
+        </label>
+        <label class="btn" (change)="getNeedyByBloodType(B.value)">
+          <input class="input" type="radio" name="shuffle-filter" value="B" />B-
+        </label>
+        <label class="btn" (change)="getNeedyByBloodType(B.value)">
+          <input class="input" type="radio" #B name="shuffle-filter" value="B" />B+
+        </label>
+        <label class="btn" (change)="getNeedyByBloodType(AB.value)">
+          <input class="input" type="radio" name="shuffle-filter" value="AB" />AB-
+        </label>
+        <label class="btn" (change)="getNeedyByBloodType(AB.value)">
+          <input class="input" type="radio" #AB name="shuffle-filter" value="AB" />AB+
+        </label>
+        <label class="btn" (change)="getNeedyByBloodType(O.value)">
+          <input class="input" type="radio" name="shuffle-filter" value="O" />O-
+        </label>
+        <label class="btn" (change)="getNeedyByBloodType(O.value)">
+          <input class="input" type="radio" #O name="shuffle-filter" value="O" />O+
+        </label>
+      </div>
+    </div>
+
+    <div class="row shuffle-wrapper portfolio-gallery">
+      <!-- <div *ngFor="let item of Needy"> -->
+      <ng-container *ngFor="let item of getPageItems()">
+        <div class="col-lg-4 col-sm-12 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat2&quot;]">
+          <div class="position-relative doctor-inner-box needy-item">
+            <div class="row">
+              <div class="col-lg-8 col-sm-8 col-md-8">
+                <h4>{{item.firstName}} {{item.lastName}}</h4>
+                <p>{{item.location}}</p>
+                <p>{{item.date | date :'shortTime' }}</p>
+                <i class="fa-brands fa-facebook-messenger fa-xl" style="color: #b80000;"
+                  (click)="openChatWindow(item.applicationUserId??'')"></i> <span class="h5" translate>
+                  donatlist.chat</span>
+              </div>
+              <div class="col-lg-4 col-sm-4 col-md-4">
+                <h2 style="color: #970a0a; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
+                  {{item.bloodType}}</h2>
+                <!-- <h1>{{item.bloodType}}</h1> -->
+                <h3 style="color: #970a0a; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
+                  {{item.quantity}} Units</h3>
+                <!-- <h3>{{item.id}}</h3> -->
+                <p class="h6" type="button" (click)="getNeedyById(item.id)" (click)="openModel()" translate>
+                  needlist.more
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <!-- Pagination buttons -->
+    <div class="pagination-container">
+      <button [disabled]="currentPage === 1" (click)="previousPage()">Previous</button>
+      <button *ngFor="let page of totalPagesArray()" [disabled]="currentPage === page"
+          (click)="goToPage(page)">{{ page }}</button>
+      <button [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
+  </div>
+
+  </div>
+
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{NeedyById?.firstName}} {{NeedyById?.lastName}}</h5>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <p><span><b>Age:</b></span> {{NeedyById?.age}}</p>
+              <p><span><b>Blood Type:</b></span> {{NeedyById?.bloodType}}</p>
+              <p><span><b>Gender:</b></span> {{NeedyById?.gender}}</p>
+              <a href="https://wa.me/{{NeedyById?.phone}}">
+                <p><span><b>Tel:</b></span> {{NeedyById?.phone}}</p>
+              </a>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <p><span><b>City:</b></span> {{NeedyById?.location}}</p>
+              <p><span><b>Units:</b></span> {{NeedyById?.quantity}}</p>
+              <p><span><b>Date:</b></span> {{ NeedyById?.date | date :'shortDate' }} {{ NeedyById?.date |
+                date:'shortTime' }}</p>
+            </div>
+          </div>
+          <div class="row" id="imageContainer">
+            <b>Image:</b>
+            <img src="{{NeedyById?.hospitalReport}}" alt="" width="150px" height="100px"
+              (click)="showFullScreenImage($event.target)">
+          </div>
+          <div id="fullscreenImage" [ngStyle]="fullscreenImageStyles" (click)="closeFullScreenImage()">
+            <img [src]="fullscreenImageUrl" alt="">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModel()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div class="chatSection" *ngIf="user && openChat">
+  <button class="btn btn-danger" (click)="hied()">x</button>
+  <app-conversation [user]="user"></app-conversation>
+</div>
+
+<div class="spikes">
+
+</div>
+
+<br><br><br><br><br>

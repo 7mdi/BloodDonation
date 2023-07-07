@@ -1,0 +1,11 @@
+
+
+
+
+
+<button class="btn btn-primary b" (click)="sendNotificationToAllUsers()">Sent NOtification To All Users</button>&nbsp;&nbsp;&nbsp;&nbsp;
+<button class="btn btn-primary b" (click)="sendNotificationToUser()">Sent NOtification To One User</button>
+
+
+
+<app-notifi-form [show]="show" [receiveId]="receiveId" (newQuantity)="handleValue($event)"></app-notifi-form>
